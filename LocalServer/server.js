@@ -28,6 +28,8 @@ app.get("/user", (req, res) => {
 });
 
 // Create HTTPS server
-https.createServer(options, app).listen(PORT, () => {
-    console.log(`HTTPS Server running at https://localhost:${PORT}`);
+const HOST = "0.0.0.0";
+
+https.createServer(options, app).listen(PORT, HOST, () => {
+    console.log(`HTTPS Server running at https://${HOST}:${PORT}`);
 });

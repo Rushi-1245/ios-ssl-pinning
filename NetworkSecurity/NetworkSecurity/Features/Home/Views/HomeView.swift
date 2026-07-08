@@ -2,14 +2,22 @@
 //  HomeView.swift
 //  NetworkSecurity
 //
-//  Created by Siddhatech on 07/07/26.
+//  Created by Rushi on 07/07/26.
 //
 
 import SwiftUI
 
 struct HomeView: View {
 
-    @StateObject private var viewModel = HomeViewModel()
+    @StateObject private var viewModel: HomeViewModel
+    
+    init() {
+        _viewModel = StateObject(
+            wrappedValue: HomeViewModel(
+                networkService: APIClient()
+            )
+        )
+    }
 
     var body: some View {
         NavigationStack {
