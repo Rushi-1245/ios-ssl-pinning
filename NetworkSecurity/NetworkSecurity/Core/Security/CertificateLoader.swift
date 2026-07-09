@@ -9,15 +9,21 @@ import Foundation
 
 enum CertificateLoader {
 
-    static func loadCertificate() throws -> Data {
+    static func loadCertificate() -> Data? {
 
         guard let url = Bundle.main.url(
             forResource: "server",
-            withExtension: "crt"
+            withExtension: "der"
         ) else {
-            throw NSError(domain: "Certificate", code: 1)
+
+            print("❌ server.der not found in bundle")
+            return nil
         }
 
-        return try Data(contentsOf: url)
+        guard let data = try? Data(contentsOf: url) else {
+            return nil
+        }
+
+        return data
     }
 }

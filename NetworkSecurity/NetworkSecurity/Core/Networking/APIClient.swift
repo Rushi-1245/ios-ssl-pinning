@@ -10,8 +10,8 @@ import Foundation
 final class APIClient: NetworkService {
 
     private let session: URLSession
-
-    init(session: URLSession = .shared) {
+    
+    init(session: URLSession = SessionProvider.shared) {
         self.session = session
     }
 
