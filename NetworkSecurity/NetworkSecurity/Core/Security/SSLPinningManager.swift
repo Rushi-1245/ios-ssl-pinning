@@ -9,11 +9,19 @@ import Foundation
 import Security
 
 final class SSLPinningManager: NSObject, URLSessionDelegate {
-
+    
     private let validator: PinningValidator
 
-    init(validator: PinningValidator = CertificateValidator()) {
-        self.validator = validator
+    init(strategy: PinningStrategy = .certificate) {
+
+        switch strategy {
+
+        case .certificate:
+            self.validator = CertificateValidator()
+
+        case .publicKey:
+            self.validator = PublicKeyValidator()
+        }
     }
 
     func urlSession(
