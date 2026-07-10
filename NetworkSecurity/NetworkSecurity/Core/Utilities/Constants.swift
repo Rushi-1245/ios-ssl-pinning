@@ -11,6 +11,6 @@ enum Constants {
 
     enum API {
 //        static let baseURL = "https://localhost:3000"
-        static let baseURL = "https://192.168.0.171:3000"
+        static let baseURL = "https://10.46.98.254:3000"
     }
 }

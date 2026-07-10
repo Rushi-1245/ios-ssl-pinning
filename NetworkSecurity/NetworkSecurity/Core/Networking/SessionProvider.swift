@@ -7,13 +7,32 @@
 
 import Foundation
 
+//enum SessionProvider {
+//
+//    static let shared: URLSession = {
+//
+//        let configuration = URLSessionConfiguration.default
+//
+//        let delegate = SSLPinningManager()
+//
+//        return URLSession(
+//            configuration: configuration,
+//            delegate: delegate,
+//            delegateQueue: nil
+//        )
+//
+//    }()
+//}
+
 enum SessionProvider {
 
     static let shared: URLSession = {
 
         let configuration = URLSessionConfiguration.default
 
-        let delegate = SSLPinningManager()
+        let delegate = SSLPinningManager(
+            validator: PublicKeyValidator()
+        )
 
         return URLSession(
             configuration: configuration,
