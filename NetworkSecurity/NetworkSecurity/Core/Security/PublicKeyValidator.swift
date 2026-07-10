@@ -43,8 +43,19 @@ final class PublicKeyValidator: PinningValidator {
             return false
         }
 
-        print("✅ Public Key Data Size:", serverPublicKeyData.count)
+        let publicKeyHash = SHA256Hasher.hash(data: serverPublicKeyData)
 
-        return false
+        print("🔑 Server Public Key Hash:")
+        print(publicKeyHash)
+
+        let isValid = publicKeyHash == Constants.Security.pinnedPublicKeyHash
+
+        print(
+            isValid
+            ? "✅ Public Key Pinning Succeeded"
+            : "❌ Public Key Pinning Failed"
+        )
+
+        return isValid
     }
 }
