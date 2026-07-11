@@ -17,7 +17,7 @@ final class PublicKeyValidator: PinningValidator {
 
         guard let serverCertificate = SecTrustGetCertificateAtIndex(serverTrust, 0) else {
 
-            print("❌ Failed to get server certificate")
+            print(SSLPinningError.serverCertificateUnavailable.localizedDescription)
             return false
         }
 
@@ -55,7 +55,7 @@ final class PublicKeyValidator: PinningValidator {
         print(
             isValid
             ? "✅ Public Key Pinning Succeeded"
-            : "❌ Public Key Pinning Failed"
+            : SSLPinningError.publicKeyValidationFailed.localizedDescription
         )
 
         return isValid

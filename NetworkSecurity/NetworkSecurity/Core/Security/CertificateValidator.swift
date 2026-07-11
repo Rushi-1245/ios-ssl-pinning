@@ -14,7 +14,7 @@ final class CertificateValidator: PinningValidator {
 
         guard let serverCertificate = SecTrustGetCertificateAtIndex(serverTrust, 0) else {
 
-            print("❌ Failed to get server certificate")
+            print(SSLPinningError.serverCertificateUnavailable.localizedDescription)
             return false
         }
 
@@ -28,9 +28,7 @@ final class CertificateValidator: PinningValidator {
 
         let isValid = serverCertificateData == pinnedCertificateData
 
-        print(isValid
-              ? "✅ Certificate Pinning Succeeded"
-              : "❌ Certificate Pinning Failed")
+        print(isValid ? "✅ Certificate Pinning Succeeded" : SSLPinningError.certificateValidationFailed.localizedDescription)
 
         return isValid
     }
