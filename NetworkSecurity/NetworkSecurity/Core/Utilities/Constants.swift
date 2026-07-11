@@ -10,8 +10,12 @@ import Foundation
 enum Constants {
 
     enum API {
-//        static let baseURL = "https://localhost:3000"
-        static let baseURL = "https://10.46.98.254:3000"
+        
+        static let environment: Environment = .development
+        
+        static var baseURL: String {
+            environment.baseURL
+        }
     }
     
     enum Security {
