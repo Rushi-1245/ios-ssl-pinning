@@ -48,7 +48,9 @@ final class PublicKeyValidator: PinningValidator {
         print("🔑 Server Public Key Hash:")
         print(publicKeyHash)
 
-        let isValid = publicKeyHash == Constants.Security.pinnedPublicKeyHash
+        let isValid = Constants.Security.pinnedPublicKeyHashes.contains(
+            publicKeyHash
+        )
 
         print(
             isValid
