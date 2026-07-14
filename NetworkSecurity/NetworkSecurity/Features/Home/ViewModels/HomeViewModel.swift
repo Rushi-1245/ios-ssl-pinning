@@ -26,7 +26,7 @@ final class HomeViewModel: ObservableObject {
         Task {
 
             isLoading = true
-            statusMessage = "Loading..."
+            statusMessage = "🟡 Loading..."
 
             defer {
                 isLoading = false
@@ -40,7 +40,7 @@ final class HomeViewModel: ObservableObject {
                 )
 
                 self.user = user
-                statusMessage = "User loaded successfully."
+                statusMessage = "🟢 User loaded successfully."
 
             } catch {
 

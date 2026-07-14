@@ -12,14 +12,10 @@ enum SessionProvider {
     static let shared: URLSession = {
 
         let configuration = URLSessionConfiguration.default
-
-        let delegate = SSLPinningManager(
-            strategy: .publicKey
-        )
         
-//        let delegate = SSLPinningManager(
-//            strategy: .certificate
-//        )
+        let delegate = SSLPinningManager(
+            strategy: Constants.Security.pinningStrategy
+        )
 
         return URLSession(
             configuration: configuration,
