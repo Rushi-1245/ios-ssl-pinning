@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
 
     @StateObject private var viewModel: HomeViewModel
-    
+
     init() {
         _viewModel = StateObject(
             wrappedValue: HomeViewModel(
@@ -29,6 +29,41 @@ struct HomeView: View {
                 Text("SSL Pinning Demo")
                     .font(.title3)
                     .foregroundStyle(.secondary)
+
+                // MARK: - Active Security Configuration
+
+                VStack(alignment: .leading, spacing: 12) {
+
+                    Label("Active Security Configuration", systemImage: "lock.shield.fill")
+                        .font(.headline)
+
+                    HStack {
+
+                        Text("Pinning Strategy")
+
+                        Spacer()
+
+                        Text(Constants.Security.pinningStrategy.title)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.green)
+                    }
+
+                    Divider()
+
+                    HStack {
+
+                        Text("Environment")
+
+                        Spacer()
+
+                        Text(Constants.API.environment.title)
+                            .fontWeight(.semibold)
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+                .background(.thinMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
 
                 Button {
                     viewModel.fetchUser()

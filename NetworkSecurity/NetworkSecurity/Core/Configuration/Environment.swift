@@ -26,3 +26,21 @@ enum Environment {
         }
     }
 }
+
+extension Environment {
+
+    var title: String {
+
+        switch self {
+
+        case .development:
+            return "Development"
+
+        case .staging:
+            return "Staging"
+
+        case .production:
+            return "Production"
+        }
+    }
+}
