@@ -11,6 +11,7 @@ import Security
 import Foundation
 import Security
 
+/// Validates the server's public key against trusted SHA-256 hashes.
 final class PublicKeyValidator: PinningValidator {
 
     func validate(serverTrust: SecTrust) -> Bool {

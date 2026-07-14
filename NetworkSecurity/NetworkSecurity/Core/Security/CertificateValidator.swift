@@ -8,6 +8,7 @@
 import Foundation
 import Security
 
+/// Validates the server certificate using certificate pinning.
 final class CertificateValidator: PinningValidator {
 
     func validate(serverTrust: SecTrust) -> Bool {

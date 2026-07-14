@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Loads the bundled SSL certificate.
 enum CertificateLoader {
 
     static func loadCertificate() -> Data? {

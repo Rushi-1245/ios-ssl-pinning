@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Handles all API requests using URLSession.
 final class APIClient: NetworkService {
 
     private let session: URLSession
